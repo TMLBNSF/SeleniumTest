@@ -23,7 +23,23 @@ public void testChrome() throws InterruptedException {
 	System.setProperty("webdriver.chrome.driver", "/Users/srikanthvrns/Documents/chromedriver"); 
 	WebDriver driver = new ChromeDriver();
   
-	driver.get("https://goo.gl/forms/DXXzjuPvi695hZGg1");
+	driver.get("https://accounts.google.com/ServiceLogin?continue=https%3A%2F%2Faccounts.google.com%2FManageAccount&dsh=6105850914390702115#identifier");
+	
+	driver.findElement(By.id("Email")).sendKeys("rahulbnsf@gmail.com");
+	driver.findElement(By.name("signIn")).click();
+	 
+	 Thread.sleep(300);
+	 driver.findElement(By.id("Passwd")).sendKeys("MySel@123");
+	 driver.findElement(By.id("signIn")).click();
+	 
+	 Thread.sleep(1000);
+	 //Check if Logged In successfully
+	 if(driver.findElement(By.cssSelector("div[class='Ll1RQb']")).getText().equals("Welcome, rahul suresh"))
+		{
+		driver.navigate().to("https://goo.gl/forms/DXXzjuPvi695hZGg1");	
+		}
+	 
+	//driver.get("https://goo.gl/forms/DXXzjuPvi695hZGg1");
 	 
 	driver.manage().window().maximize();
 	
